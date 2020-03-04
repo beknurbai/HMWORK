@@ -1,15 +1,15 @@
 package com.company;
 
 public class LimitException extends Exception {
-    private double amount;
+    private double ramainingAmount;
 
 
 
     public  LimitException (String massage, double amount){
         super(massage);
-        this.amount=amount;
+        this.ramainingAmount =amount;
 
 
-    }public double getAmount() {
-        return amount;}
+    }public double getRamainingAmount() {
+        return ramainingAmount;}
 }
