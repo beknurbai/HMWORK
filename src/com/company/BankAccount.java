@@ -5,28 +5,55 @@ import java.util.Scanner;
 public class BankAccount {
     public static double amount ;
 
-    public static void main(String[] args){}
-    public  void deposit(double sum) {
-       // for (int i = 1; ; i++) {
-          //  System.out.println("вставьте сумму: ");
-         //   Scanner sc = new Scanner(System.in);
-           // double sum = sc.nextDouble();
-            System.out.println(amount + sum);
-            return;
+
+
+    public double deposit() {
+
+            System.out.println("вставьте сумму: ");
+            Scanner sc = new Scanner(System.in);
+            double sum = sc.nextDouble();
+
+            System.out.println("вы пополнили счет на: " + sum);
+            return amount= amount+sum ;
         }
 
 
-    public  double withDraw(int money) throws LimitException {
-            if (amount < money) {
-                throw new LimitException("НЕ ДОСТАТОЧНО СРЕДСТВ НА ВАШЕМ БАЛАНСЕ :", amount);
+    public double withDraw() {
 
+
+            System.out.println("укажите сумму: ");
+            Scanner sc = new Scanner(System.in);
+            double money = sc.nextDouble();
+            System.out.println("вы сняли :" + amount);
+            if (amount > 0) {
+                amount = getAmount() - money;
+
+                if (amount < 0){
+                    amount = amount-amount;
+                }
+
+
+
+                System.out.println("остаток: " + amount);
             }
-            amount = amount;
+
+    if (amount < money) {
+                try {
+                    throw new LimitException("НЕ ДОСТАТОЧНО СРЕДСТВ НА ВАШЕМ БАЛАНСЕ :", amount);
+
+                } catch (LimitException e) {
+
+                    e.printStackTrace();
+                    System.out.println();
+                }
+            }
+
             return amount;
         }
 
-        public double getAmount () {
-            return amount;
-        }
+
+    public static double getAmount() {
+        return amount;
     }
+}
 
